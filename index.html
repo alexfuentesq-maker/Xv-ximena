@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#68102f">
+<title>Mis XV Años | Ximena</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Open Graph para el Subdominio de Ximena -->
+    <meta property="og:title" content="Mis XV Años | Ximena">
+    <meta property="og:description" content="Tengo el honor de invitarte a celebrar esta noche inolvidable. Haz clic aquí para descubrir los detalles y confirmar tu asistencia.">
+    
+    <!-- La imagen cargará directamente desde el subdominio -->
+    <meta property="og:image" content="https://xv-ximena.afdigitales.com/ximena.jpg">
+    
+    <!-- Tu subdominio oficial para esta invitación -->
+    <meta property="og:url" content="https://xv-ximena.afdigitales.com/">
+    <meta property="og:type" content="website">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="locked">
+
+<!-- SOBRE -->
+<div id="portada" class="portada">
+  <div class="puerta izquierda"></div>
+  <div class="puerta derecha"></div>
+
+  <div class="portada-contenido">
+    <p class="portada-etiqueta">UNA INVITACIÓN MUY ESPECIAL</p>
+    <h1 class="portada-titulo">Mis XV Años</h1>
+    <p class="portada-nombre">Ximena</p>
+
+    <div class="adorno">✧ ❦ ✧</div>
+
+    <p class="portada-nota">Una noche de ensueño te espera</p>
+
+    <button id="abrir" class="sello" type="button">
+      <strong>X</strong>
+      <small>TOCA PARA ABRIR</small>
+    </button>
+
+    <p class="portada-fecha">05 · DICIEMBRE · 2026</p>
+  </div>
+</div>
+
+<!-- AUDIO -->
+<audio id="audio" loop preload="none">
+  <source src="Ed Sheeran - Photograph (Sub. Español   Lyrics)(MP3_128K).mp3" type="audio/mpeg">
+</audio>
+
+<button id="audioFlotante" class="boton-flotante" type="button"
+        aria-label="Reproducir o pausar música" hidden>
+  <i class="fa-solid fa-volume-xmark"></i>
+</button>
+
+<!-- INVITACIÓN -->
+<main id="invitacion" hidden>
+
+  <header class="hero">
+    <img src="ximena.jpg" alt="Ximena con su vestido de XV años">
+    <div class="hero-contenido">
+      <p class="hero-kicker">CON LA BENDICIÓN DE DIOS</p>
+      <p class="hero-script">Mis</p>
+      <h2 class="hero-xv">XV</h2>
+      <p class="hero-script">Años</p>
+      <div class="adorno">✧ ❦ ✧</div>
+      <h1 class="hero-nombre">Ximena</h1>
+      <p class="hero-fecha">05 · DICIEMBRE · 2026</p>
+      <p class="hero-sub">Una nueva etapa, un sueño por vivir</p>
+      <a href="#bienvenida" class="bajar">DESCUBRE MI INVITACIÓN ↓</a>
+    </div>
+  </header>
+
+  <section id="bienvenida" class="seccion bienvenida fade">
+    <div class="simbolo">✧</div>
+    <p class="eyebrow">UN MOMENTO QUE VIVIRÁ EN MI CORAZÓN</p>
+    <p class="frase">Hay sueños que merecen celebrarse...</p>
+    <p class="texto">
+      Con la bendición de Dios y el amor de mis padres,
+      te invito a celebrar una nueva etapa en mi vida:
+      mis XV años.
+    </p>
+    <p class="frase-secundaria">¡Me encantará compartirlo contigo!</p>
+    <div class="adorno">❦</div>
+  </section>
+
+  <section class="seccion fecha-seccion fade">
+    <p class="eyebrow">RESERVA ESTA FECHA</p>
+    <h2 class="titulo">La Fecha</h2>
+    <div class="linea"></div>
+
+    <div class="fecha-display">
+      <span class="fecha-lateral" id="diaSemana">SÁBADO</span>
+      <div class="fecha-centro">
+        <span class="fecha-numero">05</span>
+        <span class="fecha-mes">DICIEMBRE</span>
+      </div>
+      <span class="fecha-lateral">2026</span>
+    </div>
+
+    <div id="calendario" class="calendario"></div>
+
+    <p class="texto">El comienzo de una etapa llena de ilusiones.</p>
+
+    <div class="marco-foto">
+      <img src="IMG_0353.jpeg" alt="Retrato de Ximena" loading="lazy">
+    </div>
+  </section>
+
+  <section class="seccion cuenta fade">
+    <p class="eyebrow">LA MAGIA ESTÁ POR COMENZAR</p>
+    <h2 class="titulo">Cuenta Regresiva</h2>
+    <div class="linea"></div>
+
+    <div class="contador">
+      <div class="contador-caja"><strong id="dias">00</strong><span>DÍAS</span></div>
+      <div class="contador-caja"><strong id="horas">00</strong><span>HORAS</span></div>
+      <div class="contador-caja"><strong id="minutos">00</strong><span>MINUTOS</span></div>
+      <div class="contador-caja"><strong id="segundos">00</strong><span>SEGUNDOS</span></div>
+    </div>
+
+    <p id="mensajeCuenta">Cada segundo nos acerca a un día inolvidable.</p>
+  </section>
+
+  <section class="seccion familia fade">
+    <div class="simbolo"><i class="fa-solid fa-heart"></i></div>
+    <p class="eyebrow">CON SU AMOR Y BENDICIÓN</p>
+    <h2 class="titulo">Mis Padres</h2>
+    <div class="linea"></div>
+
+    <p class="texto">
+      Gracias por ser mi guía, por llenar mis días de amor
+      y por acompañarme a hacer realidad este hermoso sueño.
+    </p>
+
+    <div class="familia-nombres">
+      <p>Cosme Humberto García Espinoza</p>
+      <span>&</span>
+      <p>Anaiza García Torres</p>
+    </div>
+
+    <p class="firma">Gracias por hacer posible este sueño.</p>
+  </section>
+
+  <section class="foto-intermedia">
+    <img src="IMG-20261029-WA0002.jpg" alt="Ximena" loading="lazy">
+  </section>
+
+  <section class="seccion padrinos fade">
+    <div class="simbolo"><i class="fa-solid fa-crown"></i></div>
+    <p class="eyebrow">PERSONAS ESPECIALES EN MI VIDA</p>
+    <h2 class="titulo">Mis Padrinos</h2>
+    <div class="linea"></div>
+
+    <p class="texto">
+      Gracias por acompañarme y formar parte de este
+      recuerdo tan importante en mi vida.
+    </p>
+
+    <div class="padrinos-grid">
+      <article class="padrino">
+        <i class="fa-solid fa-heart"></i>
+        <small>PADRINO</small>
+        <h3>Roberto Lozano</h3>
+        <div class="adorno">❦</div>
+      </article>
+
+      <article class="padrino">
+        <i class="fa-solid fa-heart"></i>
+        <small>MADRINA</small>
+        <h3>Elsa Hernandez</h3>
+        <div class="adorno">❦</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="seccion galeria fade">
+    <p class="eyebrow">RECUERDOS INOLVIDABLES</p>
+    <h2 class="titulo">Mi Historia</h2>
+    <div class="linea"></div>
+    <p class="texto">Unos instantes que hacen única esta celebración.</p>
+
+    <div class="carrusel">
+      <div class="carrusel-ventana" id="ventana">
+        <div class="carrusel-pista" id="pista">
+          <div class="carrusel-slide"><img src="IMG_0354.jpeg" alt="Foto de Ximena 1" loading="lazy"></div>
+          <div class="carrusel-slide"><img src="IMG_0355.jpeg" alt="Foto de Ximena 2" loading="lazy"></div>
+          <div class="carrusel-slide"><img src="IMG-20261029-WA0003.jpg" alt="Foto de Ximena 2" loading="lazy"></div>
+          <div class="carrusel-slide"><img src="IMG-20261029-WA0006.jpg" alt="Foto de Ximena 2" loading="lazy"></div>
+          
+          <div class="carrusel-slide"><img src="IMG_0356.jpeg" alt="Foto de Ximena 3" loading="lazy"></div>
+        </div>
+      </div>
+
+      <button id="anterior" class="flecha flecha-izq" type="button" aria-label="Foto anterior">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <button id="siguiente" class="flecha flecha-der" type="button" aria-label="Foto siguiente">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <div id="puntos" class="puntos"></div>
+  </section>
+
+  <
+  <section class="seccion itinerario fade">
+    <p class="eyebrow">ACOMPÁÑAME A CELEBRAR</p>
+    <h2 class="titulo">Eventos e Itinerario</h2>
+    <div class="linea"></div>
+
+    <p class="texto" style="margin-bottom: 30px;">
+      Primero daremos gracias a Dios y después celebraremos
+      juntos esta nueva etapa de mi vida.
+    </p>
+
+    <div class="linea-tiempo">
+      <article class="momento">
+        <div class="momento-icono"><i class="fa-solid fa-church"></i></div>
+        <div>
+          <p class="momento-hora">6:00 PM</p>
+          <h3>Ceremonia Religiosa</h3>
+          <p>Parroquia Nuestra Señora del Pueblito.</p>
+          <a class="boton-mapa" target="_blank" rel="noopener noreferrer"
+             href="https://maps.app.goo.gl/WWuppDeviFFba93S7?g_st=aw">
+            <i class="fa-solid fa-location-dot"></i> VER UBICACIÓN
+          </a>
+        </div>
+      </article>
+
+      <article class="momento">
+        <div class="momento-icono"><i class="fa-solid fa-champagne-glasses"></i></div>
+        <div>
+          <p class="momento-hora">8:00 PM</p>
+          <h3>Recepción</h3>
+          <p>El Fundador Eventos.</p>
+          <a class="boton-mapa" target="_blank" rel="noopener noreferrer"
+             href="https://maps.app.goo.gl/yyY9iYY9vk7DZiF99?g_st=aw">
+            <i class="fa-solid fa-location-dot"></i> VER UBICACIÓN
+          </a>
+        </div>
+      </article>
+
+      <article class="momento">
+        <div class="momento-icono"><i class="fa-solid fa-star"></i></div>
+        <div>
+          <p class="momento-hora">8:30 PM</p>
+          <h3>Entrada de Ximena</h3>
+          <p>El inicio de una noche llena de emoción.</p>
+        </div>
+      </article>
+
+      <article class="momento">
+        <div class="momento-icono"><i class="fa-solid fa-utensils"></i></div>
+        <div>
+          <p class="momento-hora">9:30 PM</p>
+          <h3>La Cena</h3>
+          <p>Compartamos una deliciosa velada.</p>
+        </div>
+      </article>
+
+      <article class="momento">
+        <div class="momento-icono"><i class="fa-solid fa-music"></i></div>
+        <div>
+          <p class="momento-hora">10:00 PM</p>
+          <h3>¡Que comience el baile!</h3>
+          <p>Bailemos, sonriamos y celebremos juntos.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="seccion vestimenta fade">
+    <div class="simbolo"><i class="fa-solid fa-gem"></i></div>
+    <p class="eyebrow">UNA NOCHE DE ELEGANCIA</p>
+    <h2 class="titulo">Código de Vestimenta</h2>
+    <div class="linea"></div>
+    <p class="formal">Vestimenta formal</p>
+
+    <div class="aviso-rosa">
+      <span>🌹</span>
+      <p>El color rosa queda reservado para la quinceañera. Gracias por acompañarme con elegancia en esta noche tan especial.</p>
+    </div>
+  </section>
+
+  <section class="seccion regalos fade">
+    <div class="simbolo"><i class="fa-solid fa-gift"></i></div>
+    <p class="eyebrow">UN DETALLE ESPECIAL</p>
+    <h2 class="titulo">Lluvia de Sobres</h2>
+    <div class="linea"></div>
+    <p class="regalos-texto">
+      Tu presencia es mi mejor regalo. Si deseas obsequiarme
+      un detalle, una lluvia de sobres será recibida con mucho cariño.
+    </p>
+    <div class="regalos-icono"><i class="fa-regular fa-envelope-open"></i></div>
+    <p class="regalos-firma">Con cariño, Ximena</p>
+  </section>
+
+
+
+  <section class="seccion confirmacion fade">
+    <div class="simbolo"><i class="fa-regular fa-envelope"></i></div>
+    <p class="eyebrow">ME ENCANTARÍA CONTAR CONTIGO</p>
+    <h2 class="titulo">Confirmación</h2>
+    <div class="linea"></div>
+
+    <p class="texto">
+      Tu presencia hará esta noche mucho más especial.
+      Confirma tu asistencia por WhatsApp y celebremos juntos
+      mis XV años.
+    </p>
+
+    <!-- INICIO DEL NUEVO FORMULARIO DE CONFIRMACIÓN -->
+    <div class="formulario-confirmacion">
+      <input type="text" id="nombreInvitado" placeholder="Tu nombre y apellido" required>
+      <textarea id="dedicatoriaInvitado" placeholder="Escríbele un lindo mensaje a Ximena (Opcional)" rows="3"></textarea>
+      
+      <button id="confirmarWhatsApp" class="boton-whatsapp" type="button">
+        <i class="fa-brands fa-whatsapp"></i> ENVIAR CONFIRMACIÓN
+      </button>
+    </div>
+    <!-- FIN DEL NUEVO FORMULARIO -->
+
+
+    <p class="confirmacion-firma">¡Te espero con mucha ilusión!</p>
+  </section>
+
+  <section class="despedida fade">
+    <img src="IMG-20261029-WA0005.jpg" alt="Ximena, mis XV años" loading="lazy">
+    <div class="despedida-capa">
+      <p>Gracias por acompañarme</p>
+      <h2>Ximena</h2>
+      <small>UNA NOCHE QUE VIVIRÁ POR SIEMPRE</small>
+      <div class="adorno">✧ ❦ ✧</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="adorno">❦</div>
+    <p>Con amor, ilusión y muchas bendiciones.</p>
+    <div class="firma-final">Ximena</div>
+    <small>MIS XV AÑOS · 05.12.2026</small>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>

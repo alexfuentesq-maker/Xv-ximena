@@ -1,0 +1,1512 @@
+:root {
+  --vino: #68102f;
+  --vino2: #8b2149;
+  --rosa: #c94879;
+  --rosa-pale: #f5dce6;
+  --marfil: #fffaf5;
+  --oro: #c9a45c;
+  --oro-claro: #f1dfae;
+  --texto: #64434d;
+  --caligrafia: "Parisienne", cursive;
+  --titulo: "Cormorant Garamond", serif;
+  --texto-font: "Montserrat", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--texto-font);
+  background: var(--marfil);
+  color: var(--texto);
+  overflow-x: hidden;
+}
+
+body.locked {
+  overflow: hidden;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--oro);
+  outline-offset: 4px;
+}
+
+/* =====================================
+   PORTADA / SOBRE INTERACTIVO
+===================================== */
+
+.portada {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 35%, #a94368 0%, transparent 55%),
+    linear-gradient(145deg, #4e0922, #80183f 50%, #4c0b24);
+  color: var(--marfil);
+}
+
+.portada::before {
+  content: "";
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(241, 223, 174, .65);
+  pointer-events: none;
+}
+
+.portada::after {
+  content: "";
+  position: absolute;
+  inset: 23px;
+  border: 1px solid rgba(241, 223, 174, .22);
+  pointer-events: none;
+}
+
+.portada-contenido {
+  position: relative;
+  z-index: 3;
+  width: min(88%, 430px);
+  padding: 28px 18px;
+  text-align: center;
+}
+
+.portada-etiqueta {
+  color: var(--oro-claro);
+  letter-spacing: 4px;
+  font-size: 9px;
+  line-height: 2;
+}
+
+.portada-titulo {
+  margin-top: 25px;
+  font-family: var(--titulo);
+  font-size: clamp(40px, 9vw, 59px);
+  font-weight: 400;
+}
+
+.portada-nombre {
+  font-family: var(--caligrafia);
+  font-size: clamp(70px, 15vw, 96px);
+  line-height: 1.35;
+  color: var(--oro-claro);
+}
+
+.sello {
+  width: 126px;
+  height: 126px;
+  margin: 27px auto;
+  border: 1px solid var(--oro);
+  outline: 1px solid rgba(201,164,92,.3);
+  outline-offset: 7px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f6e9c8, #c8a15a);
+  color: var(--vino);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 35px rgba(0,0,0,.22);
+  animation: brillo 3s infinite;
+}
+
+.sello strong {
+  font-family: var(--caligrafia);
+  font-size: 54px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.sello small {
+  margin-top: 8px;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.portada-fecha {
+  color: var(--oro-claro);
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.portada-nota {
+  margin-top: 25px;
+  font-family: var(--titulo);
+  font-style: italic;
+  font-size: 19px;
+}
+
+.puerta {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 2;
+  background:
+    linear-gradient(145deg, #f8e8ed, #d5afbc, #f0ddba);
+  transition: transform 1.15s cubic-bezier(.77,0,.18,1);
+}
+
+.puerta.izquierda {
+  left: 0;
+  border-right: 1px solid var(--oro);
+}
+
+.puerta.derecha {
+  right: 0;
+  border-left: 1px solid var(--oro);
+}
+
+.puerta::before {
+  content: "❦";
+  position: absolute;
+  top: 12%;
+  color: rgba(104,16,47,.10);
+  font-size: clamp(75px, 18vw, 140px);
+}
+
+.puerta.izquierda::before { left: -20px; }
+.puerta.derecha::before { right: -20px; }
+
+.portada.abriendo .puerta.izquierda {
+  transform: translateX(-105%);
+}
+
+.portada.abriendo .puerta.derecha {
+  transform: translateX(105%);
+}
+
+.portada.abriendo .portada-contenido {
+  opacity: 0;
+  transform: scale(.9);
+  transition: opacity .4s, transform .4s;
+}
+
+@keyframes brillo {
+  50% { box-shadow: 0 10px 45px rgba(241,223,174,.23); }
+}
+
+/* =====================================
+   CONTENIDO
+===================================== */
+
+#invitacion {
+  max-width: 760px;
+  margin: auto;
+  background: var(--marfil);
+  box-shadow: 0 0 50px rgba(104,16,47,.08);
+}
+
+.seccion {
+  position: relative;
+  padding: 76px 32px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--oro);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  line-height: 2;
+}
+
+.titulo {
+  color: var(--vino);
+  font-family: var(--titulo);
+  font-size: clamp(39px, 8vw, 58px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.texto {
+  max-width: 460px;
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 2.2;
+}
+
+.adorno {
+  margin: 23px 0;
+  color: var(--oro);
+  font-size: 22px;
+  letter-spacing: 7px;
+}
+
+.linea {
+  width: 145px;
+  height: 1px;
+  margin: 24px auto 33px;
+  background: linear-gradient(to right, transparent, var(--oro), transparent);
+}
+
+.simbolo {
+  margin-bottom: 15px;
+  color: var(--oro);
+  font-size: 27px;
+}
+
+/* =====================================
+   PORTADA FOTOGRÁFICA
+===================================== */
+
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 640px;
+  max-height: 950px;
+  overflow: hidden;
+  background: var(--vino);
+  color: white;
+}
+
+.hero > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  animation: acercar 15s ease-in-out infinite alternate;
+}
+
+@keyframes acercar {
+  to { transform: scale(1.06); }
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(43,0,18,.05) 15%,
+    rgba(43,0,18,.04) 35%,
+    rgba(43,0,18,.30) 55%,
+    rgba(43,0,18,.94) 100%
+  );
+}
+
+.hero-contenido {
+  position: absolute;
+  z-index: 1;
+  bottom: 42px;
+  left: 0;
+  right: 0;
+  padding: 0 14px;
+  text-align: center;
+  text-shadow: 0 3px 15px rgba(0,0,0,.4);
+}
+
+.hero-kicker {
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.hero-script {
+  color: var(--oro-claro);
+  font-family: var(--caligrafia);
+  font-size: clamp(48px, 10vw, 76px);
+  line-height: .95;
+}
+
+.hero-xv {
+  color: var(--oro-claro);
+  font-family: var(--titulo);
+  font-size: clamp(105px, 29vw, 190px);
+  font-weight: 400;
+  line-height: .95;
+}
+
+.hero-nombre {
+  margin-top: 3px;
+  color: white;
+  font-family: var(--caligrafia);
+  font-size: clamp(66px, 14vw, 110px);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.hero-fecha {
+  margin-top: 13px;
+  color: var(--oro-claro);
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.hero-sub {
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+.bajar {
+  display: block;
+  margin-top: 14px;
+  color: white;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* =====================================
+   BIENVENIDA
+===================================== */
+
+.bienvenida {
+  background:
+    radial-gradient(ellipse at center, #fff 0%, #fff2f6 100%);
+}
+
+.frase {
+  margin: 15px auto 24px;
+  max-width: 480px;
+  color: var(--rosa);
+  font-family: var(--caligrafia);
+  font-size: clamp(38px, 8vw, 57px);
+  line-height: 1.4;
+}
+
+.frase-secundaria {
+  margin-top: 20px;
+  color: var(--vino);
+  font-family: var(--titulo);
+  font-size: 25px;
+}
+
+/* =====================================
+   FECHA Y CALENDARIO
+===================================== */
+
+.fecha-seccion {
+  background: #fffdf9;
+}
+
+.fecha-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 35px 0;
+}
+
+.fecha-lateral {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--vino);
+}
+
+.fecha-centro {
+  padding: 0 20px;
+  border-left: 1px solid var(--oro);
+  border-right: 1px solid var(--oro);
+}
+
+.fecha-numero {
+  display: block;
+  color: var(--rosa);
+  font-family: var(--titulo);
+  font-size: 100px;
+  line-height: .95;
+}
+
+.fecha-mes {
+  display: block;
+  margin-top: 9px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--vino);
+}
+
+.calendario {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+  max-width: 355px;
+  margin: 30px auto 25px;
+  padding: 15px;
+  border: 1px solid #e8d3aa;
+  background: #fff7fa;
+  border-radius: 18px;
+}
+
+.cal-dia-nombre {
+  color: var(--rosa);
+  font-size: 10px;
+}
+
+.cal-dia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  font-family: var(--titulo);
+  font-size: 19px;
+  color: var(--vino);
+}
+
+.cal-dia.muted { opacity: .28; }
+
+.cal-dia.activo {
+  background: var(--vino);
+  color: white;
+  border-radius: 50%;
+}
+
+.marco-foto {
+  max-width: 530%;
+  margin: 38px auto 0;
+  padding: 9px;
+  border: 1px solid var(--oro);
+  background: white;
+  box-shadow: 0 14px 35px rgba(104,16,47,.1);
+}
+
+.marco-foto img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* =====================================
+   CUENTA REGRESIVA
+===================================== */
+
+.cuenta {
+  background: linear-gradient(150deg, #f2d9e3, #fff8fa, #eee0c4);
+}
+
+.contador {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 8px;
+  max-width: 500px;
+  margin: 35px auto 22px;
+}
+
+.contador-caja {
+  padding: 20px 3px;
+  border: 1px solid rgba(201,164,92,.5);
+  border-radius: 24px 24px 8px 8px;
+  background: rgba(255,255,255,.78);
+}
+
+.contador-caja strong {
+  display: block;
+  color: var(--vino);
+  font-family: var(--titulo);
+  font-size: clamp(29px, 7vw, 49px);
+  line-height: 1.1;
+}
+
+.contador-caja span {
+  display: block;
+  margin-top: 8px;
+  color: var(--oro);
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+#mensajeCuenta {
+  margin-top: 25px;
+  font-family: var(--titulo);
+  font-size: 21px;
+}
+
+/* =====================================
+   PADRES Y PADRINOS
+===================================== */
+
+.familia {
+  background: linear-gradient(180deg, #fffdfb, #fff0f5);
+}
+
+.familia-nombres {
+  margin-top: 25px;
+}
+
+.familia-nombres p {
+  color: var(--vino);
+  font-family: var(--titulo);
+  font-size: clamp(21px, 4.8vw, 29px);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.familia-nombres span {
+  display: block;
+  color: var(--oro);
+  font-family: var(--caligrafia);
+  font-size: 38px;
+}
+
+.firma {
+  margin-top: 23px;
+  font-family: var(--titulo);
+  font-size: 21px;
+  font-style: italic;
+}
+
+.foto-intermedia {
+  padding: 0;
+  overflow: hidden;
+  background: #fff5f8;
+}
+
+.foto-intermedia img {
+  width: 530px;
+  height: auto;
+  object-fit: contain;
+}
+
+.padrinos {
+  background: #fffdf9;
+}
+
+.padrinos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.padrino {
+  padding: 25px 12px;
+  border: 1px solid #e4cca0;
+  background: linear-gradient(145deg, #fffafd, #f7e0e8);
+  min-width: 0;
+}
+
+.padrino i {
+  color: var(--rosa);
+  font-size: 23px;
+}
+
+.padrino small {
+  display: block;
+  margin: 12px 0 8px;
+  color: var(--oro);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.padrino h3 {
+  color: var(--vino);
+  font-family: var(--titulo);
+  font-size: clamp(19px, 4vw, 26px);
+  font-weight: 500;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+/* =====================================
+   GALERÍA
+===================================== */
+
+.galeria {
+  background: linear-gradient(180deg, #fff3f7, #fffdf9);
+}
+
+.carrusel {
+  position: relative;
+  max-width: 560px;
+  margin: 32px auto 0;
+}
+
+.carrusel-ventana {
+  overflow: hidden;
+  border: 1px solid var(--oro-claro);
+  background: white;
+}
+
+.carrusel-pista {
+  display: flex;
+  transition: transform .55s ease;
+}
+
+.carrusel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #fff7fa;
+}
+
+.carrusel-slide img {
+  display: block;
+  width: 100%;
+  height: clamp(360px, 90vw, 650px);
+  object-fit: contain;
+}
+
+.flecha {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 39px;
+  height: 39px;
+  border: 1px solid var(--oro);
+  border-radius: 50%;
+  background: rgba(255,255,255,.94);
+  color: var(--vino);
+}
+
+.flecha-izq { left: 10px; }
+.flecha-der { right: 10px; }
+
+.puntos {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.punto {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #e6bdcc;
+}
+
+.punto.activo {
+  background: var(--vino);
+  transform: scale(1.25);
+}
+
+/* =====================================
+   EVENTOS
+===================================== */
+
+.eventos {
+  background: #fffdf9;
+}
+
+.tarjeta-evento {
+  max-width: 500px;
+  margin: 0 auto 24px;
+  padding: 30px 22px;
+  border: 1px solid #e4cca0;
+  background: linear-gradient(145deg, #fffdfb, #fff0f5);
+  box-shadow: 0 12px 28px rgba(104,16,47,.05);
+}
+
+.tarjeta-evento i {
+  margin-bottom: 13px;
+  color: var(--oro);
+  font-size: 33px;
+}
+
+.evento-kicker {
+  margin-bottom: 10px;
+  color: var(--oro);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.tarjeta-evento h3 {
+  color: var(--vino);
+  font-family: var(--titulo);
+  font-size: clamp(25px,5vw,33px);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.evento-hora {
+  margin-top: 14px;
+  color: var(--rosa);
+  font-family: var(--titulo);
+  font-size: 37px;
+}
+
+.evento-fecha {
+  margin-top: 7px;
+  color: var(--texto);
+  font-size: 11px;
+}
+
+.boton-mapa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 22px;
+  padding: 13px 19px;
+  background: var(--vino);
+  border: 1px solid var(--vino);
+  color: white;
+  font-size: 10px;
+  letter-spacing: 1px;
+  transition: .25s;
+}
+
+.boton-mapa:hover {
+  background: transparent;
+  color: var(--vino);
+}
+
+.salon {
+  background: linear-gradient(145deg, #fff7fa, #f2d9e3);
+}
+
+/* =====================================
+   ITINERARIO
+===================================== */
+
+.itinerario {
+  background: linear-gradient(160deg,#fff4f8,#fffdf9);
+}
+
+.linea-tiempo {
+  position: relative;
+  max-width: 470px;
+  margin: 36px auto 0;
+  text-align: left;
+}
+
+.linea-tiempo::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  bottom: 18px;
+  left: 19px;
+  width: 1px;
+  background: var(--oro);
+}
+
+.momento {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px minmax(0,1fr);
+  gap: 15px;
+  padding-bottom: 34px;
+}
+
+.momento:last-child { padding-bottom: 0; }
+
+.momento-icono {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--oro);
+  border-radius: 50%;
+  color: var(--rosa);
+  background: var(--rosa-pale);
+}
+
+.momento-hora {
+  color: var(--oro);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.momento h3 {
+  margin: 5px 0;
+  color: var(--vino);
+  font-family: var(--titulo);
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.momento p:last-child {
+  color: var(--texto);
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+/* =====================================
+   VESTIMENTA Y REGALOS
+===================================== */
+
+.vestimenta {
+  background: #fffdf9;
+}
+
+.formal {
+  color: var(--vino);
+  font-family: var(--titulo);
+  font-size: 31px;
+}
+
+.aviso-rosa {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  max-width: 460px;
+  margin: 27px auto 0;
+  padding: 17px;
+  border: 1px solid var(--rosa-pale);
+  background: #fff4f7;
+  text-align: left;
+}
+
+.aviso-rosa span {
+  font-size: 28px;
+}
+
+.aviso-rosa p {
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.regalos {
+  background: linear-gradient(145deg,#fff4f8,#fffdf9);
+}
+
+.regalos-texto {
+  max-width: 460px;
+  margin: auto;
+  font-family: var(--titulo);
+  font-size: 23px;
+  line-height: 1.8;
+}
+
+.regalos-icono {
+  margin-top: 25px;
+  color: var(--rosa);
+  font-size: 45px;
+}
+
+.regalos-firma {
+  margin-top: 20px;
+  color: var(--rosa);
+  font-family: var(--caligrafia);
+  font-size: 36px;
+}
+
+/* =====================================
+   MÚSICA
+===================================== */
+
+.musica {
+  color: white;
+  background: linear-gradient(145deg,#66102e,#a32a58,#590d29);
+}
+
+.musica .titulo { color: white; }
+.musica .eyebrow,
+.musica .simbolo { color: var(--oro-claro); }
+.musica .linea { background: linear-gradient(to right,transparent,var(--oro),transparent); }
+
+.cancion {
+  color: var(--oro-claro);
+  font-family: var(--titulo);
+  font-size: 37px;
+}
+
+.artista {
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.boton-musica {
+  margin-top: 27px;
+  padding: 14px 22px;
+  border: 1px solid var(--oro-claro);
+  background: transparent;
+  color: white;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.boton-musica:hover {
+  color: var(--vino);
+  background: var(--oro-claro);
+}
+
+.nota-musica {
+  margin-top: 15px;
+  font-size: 10px;
+  color: #f7dce6;
+}
+
+/* =====================================
+   CONFIRMACIÓN
+===================================== */
+
+.confirmacion {
+  background: radial-gradient(circle,#fff,#fff0f5);
+}
+
+.boton-whatsapp {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  margin-top: 25px;
+  padding: 15px 21px;
+  border: 1px solid #247d55;
+  background: #278c60;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .7px;
+  transition: .25s;
+}
+
+.boton-whatsapp i { font-size: 20px; }
+
+.boton-whatsapp:hover {
+  background: #1c704a;
+  transform: translateY(-2px);
+}
+
+.confirmacion-firma {
+  margin-top: 23px;
+  color: var(--rosa);
+  font-family: var(--caligrafia);
+  font-size: 35px;
+}
+
+/* =====================================
+   DESPEDIDA
+===================================== */
+
+.despedida {
+  position: relative;
+  height: clamp(580px,110vw,840px);
+  padding: 0;
+  overflow: hidden;
+  background: var(--vino);
+}
+
+.despedida > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 27%;
+}
+
+.despedida-capa {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 50px 20px 35px;
+  color: white;
+  text-align: center;
+  background: linear-gradient(to bottom,transparent 35%,rgba(55,3,23,.89));
+}
+
+.despedida-capa p {
+  font-family: var(--titulo);
+  font-size: 26px;
+  font-style: italic;
+}
+
+.despedida-capa h2 {
+  margin: 8px 0;
+  color: var(--oro-claro);
+  font-family: var(--caligrafia);
+  font-size: clamp(60px,12vw,83px);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.despedida-capa small {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* =====================================
+   PIE DE PÁGINA
+===================================== */
+
+footer {
+  padding: 36px 20px 43px;
+  text-align: center;
+  background: var(--rosa-pale);
+}
+
+footer .firma-final {
+  color: var(--vino);
+  font-family: var(--caligrafia);
+  font-size: 48px;
+}
+
+footer p {
+  margin-top: 10px;
+  font-family: var(--titulo);
+  font-size: 18px;
+}
+
+footer small {
+  display: block;
+  margin-top: 6px;
+  color: var(--vino);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* =====================================
+   ANIMACIONES Y PÉTALOS
+===================================== */
+
+.fade {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.petalo {
+  position: fixed;
+  top: -25px;
+  z-index: 15;
+  color: #ed9ab8;
+  opacity: .6;
+  pointer-events: none;
+  animation: petaloCaer linear forwards;
+}
+
+@keyframes petaloCaer {
+  to {
+    transform: translate(50px,110vh) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+/* =====================================
+   ADAPTACIÓN PARA CELULARES
+===================================== */
+
+@media (max-width: 600px) {
+  .seccion { padding: 59px 22px; }
+
+  .portada-contenido { padding: 20px 12px; }
+
+  .hero-contenido { bottom: 37px; padding: 0 9px; }
+
+  .hero-kicker { font-size: 8px; letter-spacing: 2px; }
+
+  .hero-fecha { font-size: 9px; letter-spacing: 2px; }
+
+  .fecha-display { gap: 10px; }
+
+  .fecha-lateral { font-size: 8px; letter-spacing: .5px; }
+
+  .fecha-centro { padding: 0 14px; }
+
+  .fecha-numero { font-size: 80px; }
+
+  .fecha-mes { font-size: 9px; letter-spacing: 1.5px; }
+
+  .calendario { gap: 3px; padding: 12px; }
+
+  .cal-dia { font-size: 16px; }
+
+  .contador { gap: 5px; }
+
+  .contador-caja { padding: 15px 2px; border-radius: 19px 19px 7px 7px; }
+
+  .contador-caja span { font-size: 6px; letter-spacing: .4px; }
+
+  .padrinos-grid { grid-template-columns: 1fr; }
+
+  .carrusel-slide img { height: clamp(350px,115vw,590px); }
+
+  .flecha { width: 35px; height: 35px; }
+
+  .linea-tiempo::before { left: 17px; }
+
+  .momento { grid-template-columns: 36px minmax(0,1fr); gap: 12px; }
+
+  .momento-icono { width: 36px; height: 36px; }
+
+  .momento h3 { font-size: 25px; }
+
+  .tarjeta-evento { padding: 27px 15px; }
+
+  .boton-whatsapp { padding: 14px 15px; font-size: 9px; }
+
+  .despedida { height: clamp(570px,145vw,730px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  html { scroll-behavior: auto; }
+  .fade { opacity: 1; transform: none; }
+}
+
+/* =====================================
+   BOTÓN FLOTANTE (Movido desde el HTML)
+===================================== */
+.boton-flotante {
+  position: fixed;
+  right: 17px;
+  bottom: 18px;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--oro-claro);
+  border-radius: 50%;
+  background: var(--vino);
+  color: white;
+  box-shadow: 0 5px 20px rgba(0,0,0,.2);
+}
+/* =====================================
+   EFECTO DIFUMINADO EN FOTOS
+===================================== */
+
+/* 1. Quitamos el cuadro blanco, borde y sombra de la primera foto */
+.marco-foto {
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Aplicamos el difuminado a la primera foto */
+.marco-foto img {
+  -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+}
+
+/* 2. Aplicamos el difuminado a la foto intermedia */
+.foto-intermedia img {
+  -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+}
+
+/* 3. Quitamos el borde y aplicamos el difuminado a la galería (carrusel) */
+.carrusel-ventana {
+  border: none;
+  background: transparent;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 70%, transparent 100%);
+  mask-image: radial-gradient(ellipse at center, black 70%, transparent 100%);
+}
+/* =====================================
+   FOTOS DE LADO A LADO (FULL WIDTH)
+===================================== */
+
+/* 1. Foto debajo de la fecha */
+.marco-foto {
+  max-width: none !important;
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+}
+
+/* 2. La foto intermedia ya estaba al 100%, pero aseguramos que cubra todo */
+.foto-intermedia {
+  width: 100vw !important;
+  max-width: none !important;
+}
+
+/* 3. Galería (Carrusel) de lado a lado */
+.carrusel {
+  max-width: none !important;
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+}
+
+/* Separamos un poco las flechas del carrusel para que no queden pegadas al borde del celular */
+.flecha-izq {
+  left: 20px !important;
+}
+
+.flecha-der {
+  right: 20px !important;
+}
+/* =====================================
+   DISEÑO SUAVE Y ELEGANTE PARA PADRINOS
+===================================== */
+
+.padrino {
+  /* Quitamos el borde cuadrado y duro */
+  border: none !important;
+  
+  /* Hacemos las esquinas muy redondeadas */
+  border-radius: 35px !important;
+  
+  /* Hacemos el fondo un poco más sutil */
+  background: linear-gradient(145deg, rgba(255,253,251,0.9), rgba(247,224,232,0.6)) !important;
+  
+  /* Agregamos una sombra suave y flotante en lugar de borde */
+  box-shadow: 0 10px 30px rgba(104, 16, 47, 0.06) !important;
+  
+  /* Ajustamos el espacio interno para que respire mejor */
+  padding: 30px 15px !important;
+}
+
+/* Le damos un fondo circular al ícono para romper aún más lo cuadrado */
+.padrino i {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: var(--rosa-pale);
+  border-radius: 50%;
+  margin-bottom: 5px;
+  /* Hacemos el ícono un poquito más pequeño para que encaje en el círculo */
+  font-size: 18px !important; 
+}
+/* =====================================
+   CONTENIDO MÁS GRANDE EN PADRINOS
+===================================== */
+
+/* 1. Agrandamos el círculo y el corazón */
+.padrino i {
+  width: 55px !important;
+  height: 55px !important;
+  font-size: 22px !important;
+  margin-bottom: 10px;
+}
+
+/* 2. Agrandamos la palabra "PADRINO / MADRINA" */
+.padrino small {
+  font-size: 11px !important;
+  letter-spacing: 3px !important;
+  margin-bottom: 12px !important;
+}
+
+/* 3. Hacemos los nombres notablemente más grandes */
+.padrino h3 {
+  font-size: clamp(24px, 6vw, 32px) !important;
+  font-weight: 600 !important;
+  /* Un poco más gordita la letra para que resalte */
+}
+
+/* 4. Agrandamos un poco el adorno (❦) que está debajo del nombre */
+.padrino .adorno {
+  font-size: 26px !important;
+  margin-top: 15px !important;
+  margin-bottom: 5px !important;
+}
+/* =====================================
+   UN TOQUE BONITO PARA EL CARRUSEL
+===================================== */
+
+/* 1. Flechas con efecto cristal (Glassmorphism) */
+.flecha {
+  background: rgba(255, 255, 255, 0.5) !important; /* Fondo semi-transparente */
+  backdrop-filter: blur(5px); /* Efecto de vidrio empañado */
+  border: 1px solid var(--oro) !important;
+  color: var(--vino) !important;
+  box-shadow: 0 5px 15px rgba(104, 16, 47, 0.2) !important;
+  transition: all 0.4s ease !important;
+}
+
+/* Efecto al tocar o pasar el mouse por las flechas */
+.flecha:active,
+.flecha:hover {
+  background: var(--vino) !important;
+  color: var(--oro-claro) !important;
+  border-color: var(--vino) !important;
+  transform: translateY(-50%) scale(1.15) !important;
+}
+
+/* 2. Puntos de navegación más elegantes */
+.punto {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; /* Transición con rebote suave */
+  width: 10px !important;
+  height: 10px !important;
+}
+
+/* El punto activo se convierte en una joyita */
+.punto.activo {
+  background: var(--vino) !important;
+  transform: scale(1.3) !important;
+  /* Le agregamos un anillo dorado semitransparente alrededor */
+  box-shadow: 0 0 0 4px rgba(201, 164, 92, 0.35) !important; 
+}
+/* =====================================
+   EFECTO CINEMÁTICO EN FOTOS DEL CARRUSEL
+===================================== */
+
+.carrusel-slide img {
+  /* Mejora sutil de color: más brillo, contraste y viveza */
+  filter: contrast(1.05) brightness(1.02) saturate(1.1) !important;
+  
+  /* Animación de acercamiento continuo y elegante */
+  animation: respiracionFoto 12s ease-in-out infinite alternate !important;
+}
+
+/* Creamos la animación suave */
+@keyframes respiracionFoto {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08); /* Se acerca solo un 8% muy lentamente */
+  }
+}
+/* =====================================
+   MARCO ELEGANTE PARA FOTOS DEL CARRUSEL
+===================================== */
+
+/* Quitamos el difuminado para aplicar el nuevo marco */
+.carrusel-ventana {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  
+  /* Marco grueso color marfil (como un cuadro de fotografía) */
+  border: 12px solid var(--marfil) !important;
+  
+  /* 
+     Creamos el efecto de lujo usando múltiples sombras:
+     1. Línea dorada por fuera del marco
+     2. Línea dorada fina por dentro (pegada a la foto)
+     3. Sombra amplia y suave para dar volumen
+  */
+  box-shadow: 
+    0 0 0 1px var(--oro), 
+    inset 0 0 0 1px var(--oro),
+    0 15px 40px rgba(104, 16, 47, 0.18) !important;
+  
+  /* Redondeamos las esquinas del marco apenitas, muy sutil */
+  border-radius: 4px !important;
+}
+
+/* Le damos una pequeñísima separación entre la foto y la línea dorada interna */
+.carrusel-slide img {
+  border: 2px solid var(--marfil) !important;
+}
+/* =====================================
+   ESTILOS DEL FORMULARIO DE CONFIRMACIÓN
+===================================== */
+
+.formulario-confirmacion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 25px auto 0;
+  text-align: left;
+}
+
+.formulario-confirmacion input,
+.formulario-confirmacion textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #e4cca0;
+  border-radius: 8px;
+  background: #fffdf9;
+  color: var(--texto);
+  font-family: var(--texto-font);
+  font-size: 13px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.formulario-confirmacion input::placeholder,
+.formulario-confirmacion textarea::placeholder {
+  color: #c9a45c;
+  opacity: 0.7;
+}
+
+.formulario-confirmacion input:focus,
+.formulario-confirmacion textarea:focus {
+  border-color: var(--vino);
+  box-shadow: 0 0 0 2px rgba(104, 16, 47, 0.1);
+}
+
+.formulario-confirmacion .boton-whatsapp {
+  width: 100%;
+  margin-top: 5px;
+  cursor: pointer;
+}
+/* =====================================
+   AJUSTE PERFECTO PARA LA FOTO INTERMEDIA
+===================================== */
+
+.foto-intermedia {
+  width: 100vw !important;
+  max-width: none !important;
+  /* Centramos el contenido por seguridad */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background: transparent !important;
+}
+
+.foto-intermedia img {
+  width: 100% !important;
+  
+  /* Le damos una altura controlada para que no sea infinita en celulares */
+  height: 60vh !important;
+  /* Ocupará el 60% del alto de la pantalla */
+  min-height: 400px !important;
+  max-height: 650px !important;
+  
+  /* "cover" hace que la foto llene el cuadro recortando los sobrantes, sin deformarse */
+  object-fit: cover !important;
+  
+  /* Centra la parte de la foto que se ve. Si se le corta la cabeza, cambia 'center' por 'top' */
+  object-position: center !important;
+  
+  /* Mantenemos el efecto difuminado que ya le habíamos puesto */
+  -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%) !important;
+  mask-image: radial-gradient(ellipse at center, black 55%, transparent 100%) !important;
+}
+/* =====================================
+   APARICIÓN SUAVE DE ELEMENTOS (SCROLL)
+===================================== */
+
+.oculto-suave {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.visible-suave {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efecto "cascada" para elementos que están uno al lado del otro */
+.contador-caja:nth-child(1) { transition-delay: 0.1s; }
+.contador-caja:nth-child(2) { transition-delay: 0.2s; }
+.contador-caja:nth-child(3) { transition-delay: 0.3s; }
+.contador-caja:nth-child(4) { transition-delay: 0.4s; }
+
+.padrino:nth-child(1) { transition-delay: 0.1s; }
+.padrino:nth-child(2) { transition-delay: 0.3s; }
